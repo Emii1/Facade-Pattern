@@ -29,7 +29,7 @@ public class BookStore {
 	public void acceptOrder(String shippingAddress, String phoneNumber) {
 		System.out.println("Accepting shipping order.");
 		Order order = eCommerceFacade.getOrderController().retrieveLatestOrder(id);
-		eCommerceFacade.getOrderController().processOrder(order,phoneNumber);
+		eCommerceFacade.getOrderController().processOrder(order, phoneNumber);
 		order.setShipping(eCommerceFacade.getShippingController().createShipping(shippingAddress));
 		eCommerceFacade.getShippingController().shipOrder(order);
 	}
