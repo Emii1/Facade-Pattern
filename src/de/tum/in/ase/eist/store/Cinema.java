@@ -10,7 +10,7 @@ public class Cinema {
 	private final String address;
 	private final String name;
 	private final int id;
-	private ECommerceFacade eCommerceFacade;
+	private final ECommerceFacade eCommerceFacade;
 	//private final OrderController orderController;
 	//private final ShippingController shippingController;
 	//private final AdvertisementController advertisementController;
@@ -19,6 +19,7 @@ public class Cinema {
 		this.address = address;
 		this.name = name;
 		this.id = generateCinemaId();
+		this.eCommerceFacade = new ECommerceFacade();
 		//this.orderController = new OrderController();
 		//this.shippingController = new ShippingController();
 		//this.advertisementController = new AdvertisementController();
@@ -38,14 +39,14 @@ public class Cinema {
 	}
 
 	public void advertise(int ageRestriction) {
-		eCommerceFacade.getAdvertisementController().playAdvertisement(ageRestriction);
+		eCommerceFacade.playAdvertisement(ageRestriction);
 	}
 
 	public void deliverPopcorn(String shippingAddress) {
-		Order order = eCommerceFacade.getOrderController().retrieveLatestOrder(id);
-		eCommerceFacade.getOrderController().processOrder(order);
-		order.setShipping(eCommerceFacade.getShippingController().createShipping(shippingAddress));
-		eCommerceFacade.getShippingController().shipOrder(order);
+		Order order = eCommerceFacade.retrieveLatestOrder(id);
+		eCommerceFacade.processOrder(order);
+		//order.setShipping(eCommerceFacade.getShippingController().createShipping(shippingAddress));
+		//eCommerceFacade.getShippingController().shipOrder(order);
 	}
 
 	@Override
