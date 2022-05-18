@@ -63,6 +63,9 @@ public  class ECommerceFacade extends AdvertisementController {
         advertisementController.playAdvertisement(ageRestriction);
     }
 
-    public void shipOrder(Order order, String string){}
+    public void shipOrder(Order order, String address){
+        order.setShipping(shippingController.createShipping(address));
+        shippingController.shipOrder(order);
+    }
 
 }
