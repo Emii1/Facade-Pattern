@@ -1,48 +1,66 @@
 package de.tum.in.ase.eist.ecommerce;
 
 public  class ECommerceFacade extends AdvertisementController {
-    private Order processOrder;
-    private Order retrieveLastOrder;
-    private int playAdvertisment;
+    private AdvertisementController advertisementController;
+    private OrderController orderController;
+    private ShippingController shippingController;
 
-    public Order getProcessOrder() {
-        return processOrder;
+    public OrderController getOrderController() {
+        return orderController;
     }
 
-    public void setProcessOrder(Order processOrder) {
-        this.processOrder = processOrder;
+    public void setOrderController(OrderController orderController) {
+        this.orderController = orderController;
     }
 
-    public Order getRetrieveLastOrder() {
-        return retrieveLastOrder;
+    public AdvertisementController getAdvertisementController() {
+        return advertisementController;
     }
 
-    public void setRetrieveLastOrder(Order retrieveLastOrder) {
-        this.retrieveLastOrder = retrieveLastOrder;
+    public void setAdvertisementController(AdvertisementController advertisementController) {
+        this.advertisementController = advertisementController;
     }
 
-    public int getPlayAdvertisment() {
-        return playAdvertisment;
+    public ShippingController getShippingController() {
+        return shippingController;
     }
 
-    public void setPlayAdvertisment(int playAdvertisment) {
-        this.playAdvertisment = playAdvertisment;
+    public void setShippingController(ShippingController shippingController) {
+        this.shippingController = shippingController;
     }
 
-
+    public ECommerceFacade(AdvertisementController advertisementController, OrderController orderController,
+                           ShippingController shippingController) {
+        this.advertisementController = advertisementController;
+        this.orderController = orderController;
+        this.shippingController = shippingController;
+    }
 
     public ECommerceFacade(){
-
-    }
-    public void processOrder(Order order, String string){}
-    public Order retrieveLatestOrder(Order order){
-        Order order1 = order;
-        return order;
+          this.advertisementController = new AdvertisementController();
+          this.shippingController = new ShippingController();
+          this.orderController= new OrderController();
     }
 
-    @Override
+
+
+    public void processOrder(Order order, String number){
+        orderController.processOrder(order, number);
+
+    }
+
+    public void processOrder(Order order){
+        orderController.processOrder(order);
+    }
+
+
+    public Order retrieveLatestOrder(int id){
+       return orderController.retrieveLatestOrder(id);
+    }
+
+
     public void playAdvertisement(int ageRestriction) {
-        super.playAdvertisement(ageRestriction);
+        advertisementController.playAdvertisement(ageRestriction);
     }
 
     public void shipOrder(Order order, String string){}
