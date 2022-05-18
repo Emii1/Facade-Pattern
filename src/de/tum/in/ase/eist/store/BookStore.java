@@ -2,8 +2,8 @@ package de.tum.in.ase.eist.store;
 
 import de.tum.in.ase.eist.ecommerce.ECommerceFacade;
 import de.tum.in.ase.eist.ecommerce.Order;
-import de.tum.in.ase.eist.ecommerce.OrderController;
-import de.tum.in.ase.eist.ecommerce.ShippingController;
+//import de.tum.in.ase.eist.ecommerce.OrderController;
+//import de.tum.in.ase.eist.ecommerce.ShippingController;
 
 // TODO 4 remove all associations to the different controllers in all classes of the package store and use the facade
 // instead.
@@ -21,7 +21,7 @@ public class BookStore {
 		this.address = address;
 		this.name = name;
 		this.id = generateBookStoreId();
-		this.eCommerceFacade = eCommerceFacade;
+
 		//this.orderController = new OrderController();
 		//this.shippingController = new ShippingController();
 	}
@@ -37,6 +37,7 @@ public class BookStore {
 	public String getAddress() {
 		return address;
 	}
+
 
 	public String getName() {
 		return name;
